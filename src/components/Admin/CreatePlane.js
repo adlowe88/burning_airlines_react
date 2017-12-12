@@ -35,14 +35,29 @@ class CreatePlane extends Component {
           <label>Name:</label>
           <input type="text" onChange={this._handleChangeFor('name')} value={ this.state.content.name } />
           <label>Number of Rows:</label>
-          <input type="integer" onChange={this._handleChangeFor('rows')} value={ this.state.content.rows } />
+          <input type="number" onChange={this._handleChangeFor('rows')} value={ this.state.content.rows } />
           <label>Number of Columns:</label>
-          <input type="integer" onChange={this._handleChangeFor('columns')} value={ this.state.content.columns } />
+          <input type="number" onChange={this._handleChangeFor('columns')} value={ this.state.content.columns } />
           <input type="submit" value="Add Plane"/>
         </form>
       </div>
     );
   }
 }
+
+// function ListPlanes(props) {
+//   return (
+//     <div>
+//       <h1>plane list</h1>
+//       { props.map( p => <p key = { p.id }>
+//         {p.name}
+//         {p.rows}
+//         {p.columns}
+//       </p>)}
+//     </div>
+//   );
+// }
+//
+// ListPlanes(this.state.content);
 
 export default CreatePlane;
