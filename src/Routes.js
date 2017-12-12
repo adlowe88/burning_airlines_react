@@ -2,13 +2,13 @@ import React from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
 import Home from './components/Home';
+import CreateFlight from './components/Admin/CreateFlight';
 
 const Routes = (
   <Router>
     <div>
       <Route exact path = "/" component = { Home } />
-      <Route path = "/searchform" component = { SearchForm } />
-      <Route path = "/seat_selection" component = { SeatSelection } />
+      <Route exact path = "/createflight" component = { CreateFlight } />
     </div>
   </Router>
 );
