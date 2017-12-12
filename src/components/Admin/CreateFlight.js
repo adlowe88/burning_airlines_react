@@ -2,30 +2,38 @@ import React, { PureComponent as Component } from 'react';
 
 import axios from 'axios';
 
-const SERVER_URL = 'http://localhost:5000';
+const SERVER_URL = 'http://localhost:5000/flights.json'
 
 class CreateFlight extends Component {
   constructor() {
     super();
     this.state = { airplanes: [] };
+    this._handleSubmit = this._handleSubmit.bind(this);
+    this.saveFlight = this.saveFlight.bind(this);
   }
 
-const fetchAirplanes = () => {
-  axios.get(SERVER_URL).then( results => this.setState (
-    {airplanes: results.data} ) );
-}
-fetchAirplanes();
+  _handleSubmit(e) {
+    e.preventDefault();
+    //what happens on submit?
+  }
 
-// const fetchSecrets = () => {
-//   axios.get(SERVER_URL).then( results => this.setState( {secrets: results.data} ) );
-//   setTimeout( fetchSecrets, 4000 ); //Recursive. better than setInterval
+// const fetchAirplanes = () => {
+//     axios.get(SERVER_URL).then( results => this.setState (
+//       {airplanes: results.data} ) );
+//       setTimeout( fetchAirplanes, 4000 );
+//   }
+// fetchAirplanes();
+//
+// saveFlight(f) {
+//   axios.post(SERVER_URL, /*add in what im sending*/).then(results => {
+//     this.setState({airplanes: [results.data, ...this.state.airplanes]})
+//   });
 // }
-// fetchSecrets();
 
   render() {
     return(
       <div>
-        <form>
+        <form onSubmit={this._handleSubmit}>
           <select>
             { this.state.airplanes.map( (a) => {
               return <option value={a.id}>{a.name}</option>
