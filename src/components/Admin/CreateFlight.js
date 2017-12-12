@@ -19,7 +19,7 @@ class CreateFlight extends Component {
 
     fetchAirplanes();
     this._handleSubmit = this._handleSubmit.bind(this);
-    // this.saveFlight = this.saveFlight.bind(this);
+    this.saveFlight = this.saveFlight.bind(this);
   }
   saveFlight(f) {
     axios.post(SERVER_URL, {content: f}).then(results => {
@@ -29,7 +29,7 @@ class CreateFlight extends Component {
 
   _handleSubmit(e) {
     e.preventDefault();
-    this.props.onSubmit={saveFlight};
+    this.props.onSubmit({saveFlight(this.state.content)});
     this.setState( { content: ''} );
   }
 
