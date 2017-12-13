@@ -1,6 +1,8 @@
 import React from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SearchForm from './components/SearchForm';
+
 
 import Home from './components/Home';
 import CreateFlight from './components/Admin/CreateFlight';
@@ -12,7 +14,14 @@ import SeatBox from './components/SeatBox';
 const Routes = (
   <Router>
 
+
     <div>
+      <nav>
+        <Link to = "/SearchForm">Search For Flights</Link>
+        <Link to= "/CreatePlane">Create Plane</Link>
+        <Link to = "/CreateFlight">Create Flight</Link>
+      </nav>
+
       <Route exact path = "/" component = { Home } />
 
       <Route exact path = "/searchform" component = { SearchForm } />
