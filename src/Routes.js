@@ -10,11 +10,11 @@ const Routes = (
     <div>
       <Route exact path = "/" component = { Home } />
       <Route path = "/searchform" component = { SearchForm } />
-      <Route path = "/seat_selection" component = { SeatSelection } />
+
     </div>
   </Router>
 );
-
+// <Route path = "/seat_selection" component = { SeatSelection } />
 export default Routes;
 
 
