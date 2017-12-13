@@ -19,7 +19,7 @@ class PlaneGallery extends Component {
         Rows: {p.rows}
         <br />
         Columns: {p.columns}
-        <div className="seatGrid">
+        <div className="seatGrid" style= {{width: `${p.columns * 20}px` }}>
           {_.range(p.rows*p.columns).map( (i) => { return <div className="eachSeat">i</div> } )}
         </div>
 
