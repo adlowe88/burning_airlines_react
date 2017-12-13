@@ -3,3 +3,16 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.eachSeat {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.seatGrid {
+  width: 900px;
+}
