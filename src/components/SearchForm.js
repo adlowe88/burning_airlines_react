@@ -30,11 +30,12 @@ class SearchForm extends Component {
 //Check if there are NO available seats left
 // && ( this.state.flights[i].seats_left > 0 )
 
-  checkFlights (flights, flightsToList) {
+ checkFlights (flights, flightsToList) {
 
     for (let i = 0; i < this.state.flights.length; i++) {
       if ((this.state.flights[i].origin === this.state.content.origin )
           && ( this.state.flights[i].destination === this.state.content.destination )
+          && ( this.state.flights[i].seats_left > 0 )
           ) {
             console.log(i);
             this.state.flightsToList.push(flights[i]);

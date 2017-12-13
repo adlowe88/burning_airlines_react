@@ -11,6 +11,7 @@ import SeatBox from './components/SeatBox';
 
 const Routes = (
   <Router>
+
     <div>
       <Route exact path = "/" component = { Home } />
 
