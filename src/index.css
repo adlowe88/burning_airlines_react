@@ -11,10 +11,11 @@ body {
   background-color: red;
   border: 1px solid black;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .seatGrid {
-  width: 900px;
+  /*width: 900px;*/
 }
 
 .seat {
