@@ -6,11 +6,18 @@ import SeatSelection from './components/SeatSelection';
 import Home from './components/Home';
 import CreateFlight from './components/Admin/CreateFlight';
 import CreatePlane from './components/Admin/CreatePlane';
+import SearchFlight from './components/SearchFlight';
 
 const Routes = (
   <Router>
     <div>
-      <Route exact path = "/" component = { Home } /
+      <Route exact path = "/" component = { Home } />
+
+      <Route exact path = "/searchform" component = { SearchForm } />
+      <Route path = "/searchform/:flight_id" component = { SearchFlight } />
+
+      <Route exact path = "/CreatePlane" component = { CreatePlane } />
+      <Route path = "/CreateFlight" component = { CreateFlight } />
     </div>
   </Router>
 );

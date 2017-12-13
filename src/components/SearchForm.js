@@ -2,6 +2,8 @@ import React, { PureComponent as Component } from 'react';
 import Home from './Home';
 
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 const SERVER_URL = 'http://localhost:5000/flights.json'
 
@@ -24,13 +26,15 @@ class SearchForm extends Component {
    axios.get(SERVER_URL).then( results => { this.setState({flights: results.data}) } );
   }
 
+//Check if there are NO available seats left
+// && ( this.state.flights[i].seats_left > 0 )
 
   checkFlights (flights, flightsToList) {
 
     for (let i = 0; i < this.state.flights.length; i++) {
       if ((this.state.flights[i].origin === this.state.content.origin )
           && ( this.state.flights[i].destination === this.state.content.destination )
-          && ( this.state.flights[i].seats_left > 0 )) {
+          ) {
             console.log(i);
             this.state.flightsToList.push(flights[i]);
       };
@@ -83,6 +87,7 @@ function ListFlights(props) {
   return (
     <div>
       { props.flightsToList.map( s => <p key = { s.id }>
+      <Link to = {/searchform/+s.id}>Flight Number: { s.airplane_id }</Link>
       Origin: { s.origin }
       Destination: { s.destination }
       Seats Remaining: { s.seats_left }
@@ -90,6 +95,8 @@ function ListFlights(props) {
     </div>
   );
 }
+
+// <Link to={/flight/+f.id}>{ f.flight_num }</Link>
 
 // <h2>Flights Available</h2>
 //  c
