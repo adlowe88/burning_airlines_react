@@ -30,7 +30,7 @@ class PlaneForm extends Component {
           <label>Columns:</label>
           <input type="number" onChange={ (event) => this.setState({columns: event.target.value}) } value={this.state.columns} />
 
-          <input type="submit" value="Add Plane" />
+          <input type="submit" class="submit-button" value="Add Plane" />
         </form>
       </div>
     );

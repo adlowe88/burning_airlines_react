@@ -12,13 +12,13 @@ class PlaneGallery extends Component {
 
   render() {
     return(
-      <div>
+      <div class="plane-gallery">
         {this.state.planes.map( (p) => <div key= {p.id}>
-        Airplane Name: {p.name}
+          Airplane Name: {p.name}
         <br />
-        Rows: {p.rows}
+          Rows: {p.rows}
         <br />
-        Columns: {p.columns}
+          Columns: {p.columns}
         <div className="seatGrid" style= {{width: `${p.columns * 20}px` }}>
           {_.range(p.rows*p.columns).map( (i) => { return <div className="eachSeat">i</div> } )}
         </div>

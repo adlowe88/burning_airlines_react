@@ -16,6 +16,7 @@ const Routes = (
 
 
     <div>
+      <header></header>
       <nav>
         <Link to = "/SearchForm">Search For Flights</Link>
         <Link to= "/CreatePlane">Create Plane</Link>
