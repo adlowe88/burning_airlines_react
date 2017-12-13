@@ -4,14 +4,13 @@ import SearchForm from './components/SearchForm';
 import SeatSelection from './components/SeatSelection';
 
 import Home from './components/Home';
+import CreateFlight from './components/Admin/CreateFlight';
+import CreatePlane from './components/Admin/CreatePlane';
 
 const Routes = (
   <Router>
     <div>
-      <Route exact path = "/" component = { Home } />
-
-
-
+      <Route exact path = "/" component = { Home } /
     </div>
   </Router>
 );
