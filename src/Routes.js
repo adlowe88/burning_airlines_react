@@ -9,7 +9,8 @@ const Routes = (
   <Router>
     <div>
       <Route exact path = "/" component = { Home } />
-      <Route path = "/searchform" component = { SearchForm } />
+
+
 
     </div>
   </Router>
@@ -17,7 +18,7 @@ const Routes = (
 // <Route path = "/seat_selection" component = { SeatSelection } />
 export default Routes;
 
-
+  // <Route path = "/searchform/:user_id" component = { SearchForm } />
 
 // const Roster = () => (
 //   <Switch>
