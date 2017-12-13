@@ -15,7 +15,7 @@ class FlightGallery extends Component {
     return (
       <div>
         {this.state.flights.map( (f) => <p key= {f.id}>
-          <Link to = {/searchform/+f.id}>Flight Number: { f.airplane_id }</Link><br />
+          <Link to = {/searchform/+f.id}>Flight Number: { f.id }</Link><br />
           Origin: {f.origin}
           <br />
           Destination: {f.destination}

@@ -1,5 +1,6 @@
 import React, { PureComponent as Component } from 'react';
 import Home from './Home';
+import SeatBox from './SeatBox';
 
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -87,10 +88,10 @@ function ListFlights(props) {
   return (
     <div>
       { props.flightsToList.map( s => <p key = { s.id }>
-      <Link to = {/searchform/+s.id}>Flight Number: { s.airplane_id }</Link>
-      Origin: { s.origin }
-      Destination: { s.destination }
-      Seats Remaining: { s.seats_left }
+      <Link to = {/searchform/+s.id/SeatBox}>Flight Number: { s.id }</Link><br />
+      Origin: { s.origin } <br />
+      Destination: { s.destination } <br />
+      Seats Remaining: { s.seats_left } <br />
      </p>) }
     </div>
   );
