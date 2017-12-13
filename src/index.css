@@ -25,6 +25,9 @@ body {
   border: 1px solid black;
   text-align: center;
   margin: 2px;
+  box-sizing: border-box;
+  background-color: #3147FF;
+  color: white;
 }
 
 .seatbox {

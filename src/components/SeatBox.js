@@ -33,8 +33,9 @@ class SeatBox extends Component {
     super(props)
     this.state = {
       seats: [],
+      airplane: {}
     }
-    axios.get(`http://localhost:5000/flights/${this.props.flightId}.json`).then( res => {  this.setState({seats: res.data.seats}) } )
+    axios.get(`http://localhost:5000/flights/${this.props.flightId}.json`).then( res => {  this.setState({seats: res.data.seats, airplane: res.data.airplane}) } )
     this.handles = this.handles.bind(this)
   }
 
@@ -42,7 +43,7 @@ class SeatBox extends Component {
   // console.log(this.state.flightId);
 
   handles(s) {
-    console.log(s)
+    // console.log(s)
     if(!s.user_id){
       axios.put(`http://localhost:5000/seats/${s.seat_id}.json`, {user_id: 4, taken: true}).then( res => {
         console.log(res)
@@ -64,9 +65,9 @@ class SeatBox extends Component {
   }
 
   render() {
-    console.log(this.state)
+    const cols = this.state.airplane.columns
     return(
-      <div className="seatbox">
+      <div className="seatbox" style={{width: `${cols * 84}px`}}>
         {  this.state.seats.map( (s) => {
           return <Seat seatInfo={s} key={s.id} clicky={ this.handles } />
         } )  }
