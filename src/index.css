@@ -4,6 +4,20 @@ body {
   font-family: sans-serif;
 }
 
+.eachSeat {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border: 1px solid black;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.seatGrid {
+  /*width: 900px;*/
+}
+
 .seat {
   display: inline-block;
   width: 80px;
