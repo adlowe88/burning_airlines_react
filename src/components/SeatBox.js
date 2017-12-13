@@ -34,7 +34,7 @@ class SeatBox extends Component {
     this.state = {
       seats: [],
     }
-    axios.get(`http://localhost:5000/flights/1.json`).then( res => {  this.setState({seats: res.data.seats}) } )
+    axios.get(`http://localhost:5000/flights/${this.props.flightId}.json`).then( res => {  this.setState({seats: res.data.seats}) } )
     this.handles = this.handles.bind(this)
   }
 
@@ -59,7 +59,7 @@ class SeatBox extends Component {
         console.log("del") }
       )
     }
-    axios.get(`http://localhost:5000/flights/1.json`).then( res => {  this.setState({seats: res.data.seats}) } )
+    axios.get(`http://localhost:5000/flights/${s.flight_id}.json`).then( res => {  this.setState({seats: res.data.seats}) } )
     setTimeout(window.location.reload(), 400)
   }
 

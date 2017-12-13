@@ -36,7 +36,8 @@ class FlightForm extends Component {
           this.setState({date: event.target.value}) } value={this.state.date} />
 
 
-          <select onChange={(event) => this.setState( {airplane_id: event.target.value} )}>
+          <select onChange={(event) => {this.setState({airplane_id: event.target.value})} }>
+            <option value = "">Select airplane</option>
             { this.state.planes.map( (p) => {
               return <option value={p.id} key={p.id}>{p.name}</option>
             } ) }
@@ -52,3 +53,5 @@ class FlightForm extends Component {
 }
 
 export default FlightForm;
+
+// this.setState( {airplane_id: event.target.value} )
