@@ -16,7 +16,7 @@ const Routes = (
 
       <Route exact path = "/searchform" component = { SearchForm } />
       <Route path = "/:name/searchform" component = { UserName } />
-      <Route path = "/searchform/:flight_id/SeatBox" component = { SearchFlight } />
+      <Route path = "/searchform/:flight_id" component = { SearchFlight } />
       <Route exact path = "/seatbox" component = { SeatBox } />
       <Route exact path = "/CreatePlane" component = { CreatePlane } />
       <Route path = "/CreateFlight" component = { CreateFlight } />
