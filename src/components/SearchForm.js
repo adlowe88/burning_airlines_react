@@ -18,6 +18,7 @@ class SearchForm extends Component {
       flightsToList: []
      };
     this._handleSubmit = this._handleSubmit.bind(this);
+    this.checkFlights = this.checkFlights.bind(this);
 
     //  const fetchAirplanes = () => {
    axios.get(SERVER_URL).then( results => { this.setState({flights: results.data}) } );
@@ -26,15 +27,16 @@ class SearchForm extends Component {
 
   checkFlights (flights, flightsToList) {
 
-    for (let i = 0; i < flights.length; i++) {
-      if ((this.state.flights.origin === this.state.content.origin )
-          && ( this.state.flights.destination === this.state.content.destination )
-          && ( this.state.flights.seats_left > 0 )) {
-            flightsToList.push(flights[i]);
+    for (let i = 0; i < this.state.flights.length; i++) {
+      if ((this.state.flights[i].origin === this.state.content.origin )
+          && ( this.state.flights[i].destination === this.state.content.destination )
+          && ( this.state.flights[i].seats_left > 0 )) {
+            console.log(i);
+            this.state.flightsToList.push(flights[i]);
       };
     }
-    this.setState( { flightsToList } );
-
+    this.setState( { flightsToList: [...flightsToList] } );
+    console.log(this.state.flightsToList);
   }
 
   //Attached to the form itself, listening for the form to be submitted
@@ -45,7 +47,6 @@ class SearchForm extends Component {
     // this.props.onSubmit( this.state.content );
     // this.setState( { content: "" } );
     this.checkFlights(this.state.flights, this.state.flightsToList);
-    console.log(this.state.flightsToList);
   }
 
 
@@ -72,9 +73,6 @@ class SearchForm extends Component {
         </form>
         <ListFlights
           flightsToList = { this.state.flightsToList }
-          origin = { this.state.content.origin }
-          destination = { this.state.content.destination }
-          seats_left = { this.state.content.seats_left }
         />
       </div>
     );
@@ -82,7 +80,6 @@ class SearchForm extends Component {
 }
 
 function ListFlights(props) {
-
   return (
     <div>
       { props.flightsToList.map( s => <p key = { s.id }>
