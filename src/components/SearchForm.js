@@ -9,15 +9,32 @@ class SearchForm extends Component {
   constructor () {
     super();
     this.state = {
-      content: { origin: "", destination: "", seats_left: 0}
+      content: {
+        origin: "",
+        destination: "",
+        seats_left: 0,
+      },
+      flights: [],
+      flightsToList: []
      };
+    this._handleSubmit = this._handleSubmit.bind(this);
 
-     const fetchAirplanes = () => {
-       axios.get(SERVER_URL).then( results => this.setState (
-         {airplanes: results.data} ) );
-     }
+    //  const fetchAirplanes = () => {
+   axios.get(SERVER_URL).then( results => { this.setState({flights: results.data}) } );
+  }
 
-     fetchAirplanes();
+
+  checkFlights (flights, flightsToList) {
+
+    for (let i = 0; i < flights.length; i++) {
+      if ((this.state.flights.origin === this.state.content.origin )
+          && ( this.state.flights.destination === this.state.content.destination )
+          && ( this.state.flights.seats_left > 0 )) {
+            flightsToList.push(flights[i]);
+      };
+    }
+    this.setState( { flightsToList } );
+
   }
 
   //Attached to the form itself, listening for the form to be submitted
@@ -25,8 +42,10 @@ class SearchForm extends Component {
     // e.preventDefault();
     // console.log( this.state.content );
     //need to change where content object is sent to
-    this.props.onSubmit( this.state.content );
-    this.setState( { content: "" } );
+    // this.props.onSubmit( this.state.content );
+    // this.setState( { content: "" } );
+    this.checkFlights(this.state.flights, this.state.flightsToList);
+    console.log(this.state.flightsToList);
   }
 
 
@@ -37,6 +56,7 @@ class SearchForm extends Component {
       [propertyName]: event.target.value
     };
     this.setState({ content: newContent });
+
   }
 
   // Origin: <input onChange = { (event) => this.setState({ content[origin]: event.target.value })} value = { this.state.content.origin } />
@@ -51,6 +71,7 @@ class SearchForm extends Component {
           <input type = "submit" value = "Search" />
         </form>
         <ListFlights
+          flightsToList = { this.state.flightsToList }
           origin = { this.state.content.origin }
           destination = { this.state.content.destination }
           seats_left = { this.state.content.seats_left }
@@ -61,17 +82,35 @@ class SearchForm extends Component {
 }
 
 function ListFlights(props) {
+
   return (
     <div>
-      <h2>LOOK AT THE COMMENTS BELOW IN CODE</h2>
+      { props.flightsToList.map( s => <p key = { s.id }>
+      Origin: { s.origin }
+      Destination: { s.destination }
+      Seats Remaining: { s.seats_left }
+     </p>) }
     </div>
   );
 }
 
-  { props.content.map( s => <p key = { s.id }>
-  Origin: { s.content.origin }
-  Destination: { s.content.destination }
-  Seats Remaining: { s.content.seats_left}
-  </p>)}
+// <h2>Flights Available</h2>
+//  c
+
+// { this.props.flights.origin === this.props.origin }
+
+//      props.content.map( s => <p key = { s.id }>
+//      Origin: { s.content.origin }
+//      Destination: { s.content.destination }
+//      Seats Remaining: { s.content.seats_left}
+//      </p>)
+//    }
+
+
+
+  //map flights to render a flight if this next bit
+  //if this.props.flights.origin === this.props.origin
+
+
 
 export default SearchForm;
