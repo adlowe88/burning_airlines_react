@@ -1,16 +1,25 @@
 import React from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import SearchForm from './components/SearchForm';
-import SeatSelection from './components/SeatSelection';
 
 import Home from './components/Home';
 import CreateFlight from './components/Admin/CreateFlight';
 import CreatePlane from './components/Admin/CreatePlane';
+import SearchFlight from './components/SearchFlight';
+import UserName from './components/UserName';
+import SeatBox from './components/SeatBox';
 
 const Routes = (
   <Router>
     <div>
-      <Route exact path = "/" component = { Home } /
+      <Route exact path = "/" component = { Home } />
+
+      <Route exact path = "/searchform" component = { SearchForm } />
+      <Route path = "/:name/searchform" component = { UserName } />
+      <Route path = "/searchform/:flight_id" component = { SearchFlight } />
+      <Route exact path = "/seatbox" component = { SeatBox } />
+      <Route exact path = "/CreatePlane" component = { CreatePlane } />
+      <Route path = "/CreateFlight" component = { CreateFlight } />
     </div>
   </Router>
 );

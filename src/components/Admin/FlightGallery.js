@@ -1,6 +1,7 @@
 import React, { PureComponent as Component } from 'react';
 
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 
 class FlightGallery extends Component {
@@ -14,6 +15,7 @@ class FlightGallery extends Component {
     return (
       <div>
         {this.state.flights.map( (f) => <p key= {f.id}>
+          <Link to = {/searchform/+f.id}>Flight Number: { f.id }</Link><br />
           Origin: {f.origin}
           <br />
           Destination: {f.destination}
