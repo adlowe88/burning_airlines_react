@@ -5,7 +5,7 @@ import axios from 'axios';
 import FlightForm from './FlightForm';
 import FlightGallery from './FlightGallery';
 
-const SERVER_URL = 'http://localhost:5000/flights.json'
+const SERVER_URL = 'https://burningairlinesapp.herokuapp.com/flights.json'
 
 class CreateFlight extends Component {
 

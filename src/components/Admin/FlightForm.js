@@ -14,7 +14,7 @@ class FlightForm extends Component {
     }
     this._handleSubmit = this._handleSubmit.bind(this)
 
-    axios.get("http://localhost:5000/airplanes.json").then( results => this.setState ( {planes: results.data} ) )
+    axios.get("https://burningairlinesapp.herokuapp.com/airplanes.json").then( results => this.setState ( {planes: results.data} ) )
   }
 
   _handleSubmit(e){

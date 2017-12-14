@@ -37,7 +37,7 @@ class SeatBox extends Component {
       seats_left: 0,
       flight_id: 0
     }
-    axios.get(`http://localhost:5000/flights/${this.props.flightId}.json`).then( res => {  this.setState({seats: res.data.seats, airplane: res.data.airplane, seats_left: res.data.seats_left, flight_id: res.data.id}); console.log(res.data) } )
+    axios.get(`https://burningairlinesapp.herokuapp.com/flights/${this.props.flightId}.json`).then( res => {  this.setState({seats: res.data.seats, airplane: res.data.airplane, seats_left: res.data.seats_left, flight_id: res.data.id}); console.log(res.data) } )
     this.handles = this.handles.bind(this)
   }
 
@@ -47,25 +47,25 @@ class SeatBox extends Component {
   handles(s) {
     // console.log(s)
     if(!s.user_id){
-      axios.put(`http://localhost:5000/seats/${s.seat_id}.json`, {user_id: 4, taken: true}).then( res => {
+      axios.put(`https://burningairlinesapp.herokuapp.com/${s.seat_id}.json`, {user_id: 4, taken: true}).then( res => {
         console.log(res)
       })
-      axios.post("http://localhost:5000/reservations.json", {user_id: 4, flight_id: s.flight_id, seat_id: s.seat_id}).then(
+      axios.post("https://burningairlinesapp.herokuapp.com/reservations.json", {user_id: 4, flight_id: s.flight_id, seat_id: s.seat_id}).then(
         res => { console.log(res) }
       )
-      axios.put(`http://localhost:5000/flights/${this.state.flight_id}`, {seats_left: (this.state.seats_left - 1)}).then( res => { })
+      axios.put(`https://burningairlinesapp.herokuapp.com/flights/${this.state.flight_id}`, {seats_left: (this.state.seats_left - 1)}).then( res => { })
 
     }else{
-      axios.put(`http://localhost:5000/seats/${s.seat_id}.json`, {user_id: null, taken: false}).then( res => {
+      axios.put(`https://burningairlinesapp.herokuapp.com/seats/${s.seat_id}.json`, {user_id: null, taken: false}).then( res => {
         console.log(res)
       })
       console.log(s.reservation_id)
-      axios.delete(`http://localhost:5000/reservations/${s.reservation_id}.json`).then( res => {
+      axios.delete(`https://burningairlinesapp.herokuapp.com/reservations/${s.reservation_id}.json`).then( res => {
         console.log("del") }
       )
-      axios.put(`http://localhost:5000/flights/${this.state.flight_id}`, {seats_left: (this.state.seats_left + 1)}).then( res => { })
+      axios.put(`https://burningairlinesapp.herokuapp.com/flights/${this.state.flight_id}`, {seats_left: (this.state.seats_left + 1)}).then( res => { })
     }
-    axios.get(`http://localhost:5000/flights/${s.flight_id}.json`).then( res => {  this.setState({seats: res.data.seats}) } )
+    axios.get(`https://burningairlinesapp.herokuapp.com/flights/${s.flight_id}.json`).then( res => {  this.setState({seats: res.data.seats}) } )
     setTimeout(window.location.reload(), 400)
   }
 

@@ -7,7 +7,7 @@ class PlaneGallery extends Component {
   constructor() {
     super();
     this.state = { planes: [] }
-    axios.get("http://localhost:5000/airplanes.json").then( results => this.setState ( {planes: results.data} ) );
+    axios.get("https://burningairlinesapp.herokuapp.com/airplanes.json").then( results => this.setState ( {planes: results.data} ) );
   }
 
   render() {

@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 
-const SERVER_URL = 'http://localhost:5000/flights.json'
+const SERVER_URL = 'https://burningairlinesapp.herokuapp.com/flights.json'
 
 class SearchForm extends Component {
   constructor () {
