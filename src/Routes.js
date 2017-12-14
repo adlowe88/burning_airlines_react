@@ -23,7 +23,7 @@ const Routes = (
         <Link to = "/CreateFlight">Create Flight</Link>
       </nav>
 
-      <Route exact path = "/" component = { Home } />
+      <Route exact path = "/" component = { SearchForm } />
 
       <Route exact path = "/searchform" component = { SearchForm } />
       <Route path = "/:name/searchform" component = { UserName } />
