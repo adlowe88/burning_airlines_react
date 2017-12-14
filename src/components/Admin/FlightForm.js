@@ -32,7 +32,7 @@ class FlightForm extends Component {
           <input type="text" onChange={ (event) =>
           this.setState({destination: event.target.value}) } value={this.state.destination} />
           <label>Date:</label>
-          <input type="date" class="submit-button" onChange={ (event) =>
+          <input type="date" className="submit-button" onChange={ (event) =>
           this.setState({date: event.target.value}) } value={this.state.date} />
 
 
