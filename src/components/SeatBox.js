@@ -33,8 +33,11 @@ class SeatBox extends Component {
     super(props)
     this.state = {
       seats: [],
+      airplane: {},
+      seats_left: 0,
+      flight_id: 0
     }
-    axios.get(`http://localhost:5000/flights/${this.props.flightId}.json`).then( res => {  this.setState({seats: res.data.seats}) } )
+    axios.get(`http://localhost:5000/flights/${this.props.flightId}.json`).then( res => {  this.setState({seats: res.data.seats, airplane: res.data.airplane, seats_left: res.data.seats_left, flight_id: res.data.id}); console.log(res.data) } )
     this.handles = this.handles.bind(this)
   }
 
@@ -42,7 +45,7 @@ class SeatBox extends Component {
   // console.log(this.state.flightId);
 
   handles(s) {
-    console.log(s)
+    // console.log(s)
     if(!s.user_id){
       axios.put(`http://localhost:5000/seats/${s.seat_id}.json`, {user_id: 4, taken: true}).then( res => {
         console.log(res)
@@ -50,6 +53,8 @@ class SeatBox extends Component {
       axios.post("http://localhost:5000/reservations.json", {user_id: 4, flight_id: s.flight_id, seat_id: s.seat_id}).then(
         res => { console.log(res) }
       )
+      axios.put(`http://localhost:5000/flights/${this.state.flight_id}`, {seats_left: (this.state.seats_left - 1)}).then( res => { })
+
     }else{
       axios.put(`http://localhost:5000/seats/${s.seat_id}.json`, {user_id: null, taken: false}).then( res => {
         console.log(res)
@@ -58,15 +63,16 @@ class SeatBox extends Component {
       axios.delete(`http://localhost:5000/reservations/${s.reservation_id}.json`).then( res => {
         console.log("del") }
       )
+      axios.put(`http://localhost:5000/flights/${this.state.flight_id}`, {seats_left: (this.state.seats_left + 1)}).then( res => { })
     }
     axios.get(`http://localhost:5000/flights/${s.flight_id}.json`).then( res => {  this.setState({seats: res.data.seats}) } )
     setTimeout(window.location.reload(), 400)
   }
 
   render() {
-    console.log(this.state)
+    const cols = this.state.airplane.columns
     return(
-      <div className="seatbox">
+      <div className="seatbox" style={{width: `${cols * 84}px`}}>
         {  this.state.seats.map( (s) => {
           return <Seat seatInfo={s} key={s.id} clicky={ this.handles } />
         } )  }
