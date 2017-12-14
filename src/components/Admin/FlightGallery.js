@@ -23,6 +23,8 @@ class FlightGallery extends Component {
           Date: {f.date}
           <br />
           Airplane: {f.airplane_id}
+          <br />
+          Seats Remaining: {f.seats_left}
           </p>)}
           <hr />
       </div>
