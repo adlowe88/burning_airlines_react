@@ -90,7 +90,7 @@ function ListFlights(props) {
   return (
     <div>
       { props.flightsToList.map( s => <p key = { s.id }>
-      <Link to = {/searchform/+s.id}>Flight Number: { s.id }</Link><br />
+      <Link to = {/searchform/+s.id} seatsLeft = { s.seats_left }>Flight Number: { s.id }</Link><br />
       Origin: { s.origin } <br />
       Destination: { s.destination } <br />
       Seats Remaining: { s.seats_left } <br />

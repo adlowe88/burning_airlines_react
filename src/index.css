@@ -19,6 +19,10 @@ nav a {
   color: black;
 }
 
+a {
+  color: #3147FF;
+}
+
 form {
   font-size: 18px;
 }
@@ -70,10 +74,7 @@ header {
   box-sizing: border-box;
   background-color: #3147FF;
   color: white;
-  background-color: #3147FF;
-  color: white;
   font-size: 28px;
-
 }
 
 .seatbox {

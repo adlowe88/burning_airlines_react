@@ -25,10 +25,7 @@ class PlaneGallery extends Component {
         </div>
 
         </div>
-
         )}
-
-
       </div>
     );
   }
