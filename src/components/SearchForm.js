@@ -30,11 +30,12 @@ class SearchForm extends Component {
 //Check if there are NO available seats left
 // && ( this.state.flights[i].seats_left > 0 )
 
-  checkFlights (flights, flightsToList) {
+ checkFlights (flights, flightsToList) {
 
     for (let i = 0; i < this.state.flights.length; i++) {
       if ((this.state.flights[i].origin === this.state.content.origin )
           && ( this.state.flights[i].destination === this.state.content.destination )
+          && ( this.state.flights[i].seats_left > 0 )
           ) {
             console.log(i);
             this.state.flightsToList.push(flights[i]);
@@ -74,8 +75,9 @@ class SearchForm extends Component {
         <form onSubmit = { this._handleSubmit }>
           Origin: <input type="text" onChange={this._handleChangeFor('origin')} value={this.state.content.origin}/>
           Destination: <input type="text" onChange={this._handleChangeFor('destination')} value={this.state.content.destination}/>
-          <input type = "submit" value = "Search" />
+          <input type = "submit" class="submit-button" value = "Search" />
         </form>
+        <hr />
         <ListFlights
           flightsToList = { this.state.flightsToList }
         />

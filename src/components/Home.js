@@ -32,7 +32,7 @@ class Home extends Component {
         <form onSubmit = { this._handleSubmit }>
           Name: <input onChange = { (event) => this.setState({ name: event.target.value })} value = { this.state.name } />
           Password: <input onChange = { (event) => this.setState({ password: event.target.value })} value = { this.state.password } />
-          <input type = "submit" value = "Login" />
+          <input type = "submit" class="submit-button" value = "Login" />
         </form>
       </div>
     );

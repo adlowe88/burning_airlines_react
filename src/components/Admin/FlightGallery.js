@@ -14,6 +14,7 @@ class FlightGallery extends Component {
   render() {
     return (
       <div>
+        <hr />
         {this.state.flights.map( (f) => <p key= {f.id}>
           <Link to = {/searchform/+f.id}>Flight Number: { f.id }</Link><br />
           Origin: {f.origin}
@@ -26,7 +27,6 @@ class FlightGallery extends Component {
           <br />
           Seats Remaining: {f.seats_left}
           </p>)}
-          <hr />
       </div>
     );
   }
