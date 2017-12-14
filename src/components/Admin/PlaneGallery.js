@@ -13,6 +13,7 @@ class PlaneGallery extends Component {
   render() {
     return(
       <div class="plane-gallery">
+        <hr />
         {this.state.planes.map( (p) => <div key= {p.id}>
           Airplane Name: {p.name}
         <br />
@@ -25,8 +26,8 @@ class PlaneGallery extends Component {
 
         </div>
 
-          )}
-        <hr />
+        )}
+
 
       </div>
     );

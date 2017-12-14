@@ -77,6 +77,7 @@ class SearchForm extends Component {
           Destination: <input type="text" onChange={this._handleChangeFor('destination')} value={this.state.content.destination}/>
           <input type = "submit" class="submit-button" value = "Search" />
         </form>
+        <hr />
         <ListFlights
           flightsToList = { this.state.flightsToList }
         />

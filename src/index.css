@@ -67,6 +67,9 @@ header {
   border: 1px solid black;
   text-align: center;
   margin: 2px;
+  background-color: #3147FF;
+  color: white;
+  font-size: 28px;
 }
 
 .seatbox {
